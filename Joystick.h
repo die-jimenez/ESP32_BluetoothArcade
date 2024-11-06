@@ -8,26 +8,28 @@
 
 class Joystick {
 private:
-  uint8_t pinButton;
-  uint8_t pinLed;
-  char key;
+  uint8_t frontPin;
+  uint8_t backPin;
+  uint8_t leftPin;
+  uint8_t rightPin;
 
-  
+  //Se utiliza para que solo se ejecute una accion una sola vez, aunque se deje presioanada la tecla
+  bool isFrontDown;
+  bool isBackDown;
+  bool isLeftDown;
+  bool isRightDown;
 
 
 public:
   //Constructor
-  Joystick(uint8_t _frontPin, _backPin, _leftPin, _rightPin;
+  Joystick(uint8_t _frontPin, uint8_t _backPin, uint8_t _leftPin, uint8_t _rightPin);
   //Deconstructor: para eliminarlo
   ~Joystick();
 
   void Init();
-  void Press(BleKeyboard _bleKeyboard);
-  bool isPressed();
-  bool Read();
-  
-  //Se utiliza para que solo se ejecute una accion una sola vez, aunque se deje presioanada la tecla
-  bool isKeyDown;
+  void Loop(BleKeyboard _bleKeyboard);
+  bool isPressed(uint8_t _directionPin);
+  bool Read(uint8_t _directionPin);
 };
 
 

@@ -17,6 +17,7 @@
 
 #include <BleKeyboard.h>
 #include "ArcadeButton.h"
+#include "Joystick.h"
 BleKeyboard bleKeyboard;
 bool bluetoothConectado;
 
@@ -45,11 +46,6 @@ const char BLUE_KEY = '1';
 const char GREEN_KEY = '2';
 const char YELLOW_KEY = '3';
 
-//Keys de botones
-const char JOYSTICK_FRONT = ' ';
-const char JOYSTICK_BACK = '1';
-const char JOYSTICK_RIGHT = '2';
-const char JOYSTICK_LEFT = '3';
 
 
 //Declaracion de botones
@@ -57,12 +53,8 @@ ArcadeButton redButton(GPIO_RED_BUTTON, GPIO_RED_LED, RED_KEY);
 ArcadeButton blueButton(GPIO_BLUE_BUTTON, GPIO_BLUE_LED, BLUE_KEY);
 ArcadeButton greenButton(GPIO_GREEN_BUTTON, GPIO_GREEN_LED, GREEN_KEY);
 ArcadeButton yellowButton(GPIO_YELLOW_BUTTON, GPIO_YELLOW_LED, YELLOW_KEY);
-
 //Declaracion de Joystick
-ArcadeButton joystickFront(GPIO_RED_BUTTON, GPIO_RED_LED, RED_KEY);
-ArcadeButton joystickBack(GPIO_BLUE_BUTTON, GPIO_BLUE_LED, BLUE_KEY);
-ArcadeButton joystickLeft(GPIO_GREEN_BUTTON, GPIO_GREEN_LED, GREEN_KEY);
-ArcadeButton joystickRight(GPIO_YELLOW_BUTTON, GPIO_YELLOW_LED, YELLOW_KEY);
+Joystick joystick(GPIO_FRONT_RED, GPIO_DOWN_ORANGE, GPIO_LEFT_YELLOW, GPIO_RIGHT_GREEN);
 
 
 void setup() {
@@ -79,8 +71,11 @@ void setup() {
   yellowButton.Init(HIGH);
 
   //InitButtons();
+  joystick.Init();
   InitLedIntegrado();
   ApagarLedIntegrado();
+
+  bleKeyboard.setDelay(0);
 }
 
 void loop() {
@@ -100,6 +95,9 @@ void loop() {
       bluetoothConectado = true;
       digitalWrite(2, HIGH);
     }
+
+    //Joystick
+    joystick.Loop(bleKeyboard);
 
     //Botones
     if (redButton.isPressed()) {
@@ -134,7 +132,7 @@ void loop() {
       //delay(50);
     } else yellowButton.isKeyDown = false;
   }
-  delay(50);
+  delay(10);
 }
 
 
