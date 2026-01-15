@@ -1,3 +1,4 @@
+#Bluetooth Arcade Controls
 Esto codigo fue creado para una ESP WROOM 32S. La libreria BleKeyboard es compatible con con este pero hay que modificar el archivo de la liberia
 1. Abre el archivo BleKeyboard.cpp que se encuentra en la carpeta de la biblioteca ESP32_BLE_Keyboard (Generalmente en documnentos/arduino/Libreries)
 2. Localiza las líneas que causan el error, específicamente -->
