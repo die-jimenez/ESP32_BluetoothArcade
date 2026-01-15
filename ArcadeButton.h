@@ -1,4 +1,3 @@
-//#ifndef Evita posibles errores de duplicar clases
 #ifndef __ARCADEBUTTON_H__
 #define __ARCADEBUTTON_H__
 
@@ -16,9 +15,7 @@ private:
 
 
 public:
-  //Constructor
   ArcadeButton(uint8_t _pinButton, uint8_t _pinLed, char _key);
-  //Deconstructor: para eliminarlo
   ~ArcadeButton();
 
   void Init(bool _ledState);
