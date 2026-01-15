@@ -1,4 +1,3 @@
-//#ifndef Evita posibles errores de duplicar clases
 #ifndef __JOYSTICK_H__
 #define __JOYSTICK_H__
 
@@ -21,9 +20,7 @@ private:
 
 
 public:
-  //Constructor
   Joystick(uint8_t _frontPin, uint8_t _backPin, uint8_t _leftPin, uint8_t _rightPin);
-  //Deconstructor: para eliminarlo
   ~Joystick();
 
   void Init();
