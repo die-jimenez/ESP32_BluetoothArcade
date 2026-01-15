@@ -3,7 +3,6 @@
 #include "esp32-hal-gpio.h"
 #include "Joystick.h"
 
-//Definición del constructor
 Joystick::Joystick(uint8_t _frontPin, uint8_t _backPin, uint8_t _leftPin, uint8_t _rightPin) {
   frontPin = _frontPin;
   backPin = _backPin;
