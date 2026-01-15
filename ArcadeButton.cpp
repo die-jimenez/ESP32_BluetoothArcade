@@ -2,7 +2,6 @@
 #include "esp32-hal-gpio.h"
 #include "ArcadeButton.h"
 
-//Definición del constructor
 ArcadeButton::ArcadeButton(uint8_t _pinButton, uint8_t _pinLed, char _key) {
   pinButton = _pinButton;
   pinLed = _pinLed;
